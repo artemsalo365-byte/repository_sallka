@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="IRONFLOW — фитнес-клуб в Благовещенске: силовые тренировки, йога, кардио, персональные занятия. Абонементы, расписание, команда тренеров. Запишись и начни тренироваться.">
+    <meta name="keywords" content="фитнес, фитнес-клуб, Благовещенск, тренажерный зал, абонемент, тренировки, йога, кардио, персональный тренер, IRONFLOW">
+    <title>IRONFLOW | Фитнес-клуб</title>
+    <link rel="stylesheet" href="stuly.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#home" class="logo">
+                    <span class="logo-icon"></span>
+                    <span class="logo-text">IRON<span class="orange-text">FLOW</span></span>
+                </a>
+                
+                <div class="nav-menu">
+                    <a href="#home" class="nav-link active">Главная</a>
+                    <a href="#services" class="nav-link">Услуги</a>
+                    <a href="#pricing" class="nav-link">Цены</a>
+                    <a href="#team" class="nav-link">Команда</a>
+                    <a href="#schedule" class="nav-link">Расписание</a>
+                    <a href="#testimonials" class="nav-link">Отзывы</a>
+                    <a href="#contact" class="nav-link">Контакты</a>
+                </div>
+                
+                <div class="nav-auth">
+                    <button class="btn btn-outline login-btn">Войти</button>
+                    <button class="btn btn-primary register-btn">Регистрация</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Герой секция -->
+    <section class="hero" id="home">
+        <video class="hero-video-bg" autoplay muted loop playsinline>
+            <source src="/image/jucy.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">
+                    <span>Потому что ты можешь.</span>
+                    <span>Потому что ты достоин.</span>
+                    <span class="orange-text">Потому что мир принадлежит тем, кто не ждёт, а действует.</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Ты пришёл в зал не для галочки. Ты здесь, потому что внутри тебя огонь, который требует выхода.
+                </p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-lg register-btn">
+                        Начать тренироваться
+                    </button>
+                    <a href="#services" class="btn btn-outline btn-lg">
+                        Наши услуги
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="statClients" data-count="0">0</span>
+                        <span class="stat-label">Довольных клиентов</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="statTrainers" data-count="0">0</span>
+                        <span class="stat-label">Профессиональных тренеров</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Философия -->
+    <section class="philosophy section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Наша фитнес-философия</h2>
+                <p class="section-subtitle">
+                    Наш фитнес-центр объединяет силовые тренировки и динамичные практики. 
+                    Мы стремимся к гармоничному развитию тела и духа.
+                </p>
+            </div>
+            
+            <div class="philosophy-content">
+                <div class="philosophy-text">
+                    <h3>Ты не согласен на слабость, на одышку, на «я начну с понедельника».</h3>
+                    <p>Отличаемся индивидуальными подходами и профессиональным тренерским составом. Каждая тренировка - это шаг к новой жизни, где ты сильнее, здоровее и увереннее в себе.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Здоровье прежде всего</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <span>Индивидуальный подход</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-trophy"></i>
+                            <span>Максимальные результаты</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="philosophy-image">
+                    <img src="/image/one.webp" alt="Фитнес-философия">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services section-padding bg-dark" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Наши фитнес-услуги</h2>
+                <p class="section-subtitle">
+                    Силовые тренировки, йога, кардио, персональные тренировки — выбирайте на любой вкус! 
+                    Найдите то, что подходит именно вам.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Силовые тренировки</h3>
+                    <p>Развивайте мышечную силу и выносливость с помощью упражнений с собственным весом, свободными и стационарными весами.</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> Тренажерный зал</span>
+                        <span><i class="fas fa-check"></i> Свободные веса</span>
+                        <span><i class="fas fa-check"></i> TRX</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Йога и медитация</h3>
+                    <p>Улучшите гибкость, баланс и концентрацию, освойте техники релаксации и дыхательные упражнения.</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> Хатха йога</span>
+                        <span><i class="fas fa-check"></i> Медитация</span>
+                        <span><i class="fas fa-check"></i> Дыхательные практики</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Кардиотренировки</h3>
+                    <p>Поддерживайте сердечно-сосудистую систему в отличной форме с помощью беговых дорожек, эллиптических тренажёров.</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> Беговые дорожки</span>
+                        <span><i class="fas fa-check"></i> Эллипсоиды</span>
+                        <span><i class="fas fa-check"></i> Степперы</span>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3>Персональные тренировки</h3>
+                    <p>Индивидуальные занятия с профессиональным тренером для достижения максимальных результатов.</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> Индивидуальная программа</span>
+                        <span><i class="fas fa-check"></i> Контроль питания</span>
+                        <span><i class="fas fa-check"></i> Персональный тренер</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Цены -->
+    <section class="pricing section-padding" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Варианты абонементов</h2>
+                <p class="section-subtitle">
+                    Посмотрите цены на разные абонементы и услуги. Сравните и выберите подходящий вариант.
+                </p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Базовый</h3>
+                        <div class="price-badge">Популярный</div>
+                    </div>
+                    <div class="price-body">
+                        <div class="price">
+                            <span class="amount">1500</span>
+                            <span class="currency">₽</span>
+                            <span class="period">/месяц</span>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check"></i> Доступ к основным зонам</li>
+                            <li><i class="fas fa-check"></i> Групповые занятия</li>
+                            <li><i class="fas fa-check"></i> Раздевалка и душ</li>
+                            <li><i class="fas fa-times"></i> Персональные тренировки</li>
+                            <li><i class="fas fa-times"></i> SPA и сауна</li>
+                        </ul>
+                    </div>
+                    <div class="price-footer">
+                        <button class="btn btn-outline register-btn">Купить абонемент</button>
+                    </div>
+                </div>
+                
+                <div class="price-card featured">
+                    <div class="price-header">
+                        <h3>Премиум</h3>
+                        <div class="price-badge orange-bg">Рекомендуем</div>
+                    </div>
+                    <div class="price-body">
+                        <div class="price">
+                            <span class="amount">2500</span>
+                            <span class="currency">₽</span>
+                            <span class="period">/месяц</span>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check"></i> Все зоны без ограничений</li>
+                            <li><i class="fas fa-check"></i> Все групповые занятия</li>
+                            <li><i class="fas fa-check"></i> Персональная программа</li>
+                            <li><i class="fas fa-check"></i> SPA и сауна</li>
+                            <li><i class="fas fa-check"></i> Скидка 10% на услуги</li>
+                        </ul>
+                    </div>
+                    <div class="price-footer">
+                        <button class="btn btn-primary register-btn">Купить абонемент!</button>
+                    </div>
+                </div>
+                
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Персональный</h3>
+                        <div class="price-badge">Премиум</div>
+                    </div>
+                    <div class="price-body">
+                        <div class="price">
+                            <span class="amount">3000</span>
+                            <span class="currency">₽</span>
+                            <span class="period">/месяц</span>
+                        </div>
+                        <ul class="price-features">
+                            <li><i class="fas fa-check"></i> Индивидуальные занятия</li>
+                            <li><i class="fas fa-check"></i> Персональная программа</li>
+                            <li><i class="fas fa-check"></i> Контроль питания</li>
+                            <li><i class="fas fa-check"></i> Гибкий график</li>
+                            <li><i class="fas fa-check"></i> Корректировка программы</li>
+                        </ul>
+                    </div>
+                    <div class="price-footer">
+                        <button class="btn btn-outline register-btn">Записаться</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Команда -->
+    <section class="team section-padding bg-dark" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Наша команда</h2>
+                <p class="section-subtitle">
+                    В нашем коллективе работают тренеры разных категорий - от кандидатов в мастера спорта до чемпионов международного уровня.
+                </p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="/image/sasha.jpg" alt="Александра Магомедова">
+                    </div>
+                    <div class="team-info">
+                        <h3>Александра Магомедова</h3>
+                        <p class="position">Фитнес-тренер по танцам</p>
+                        <p class="experience">Опыт: 8 лет</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="/image/igor.jpg" alt="Игорь Вихрев">
+                    </div>
+                    <div class="team-info">
+                        <h3>Игорь Вихрев</h3>
+                        <p class="position">Фитнес-тренер по кардио</p>
+                        <p class="experience">Опыт: 12 лет</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="/image/artem.jpg" alt="Артём Ветров">
+                    </div>
+                    <div class="team-info">
+                        <h3>Артём Сальников</h3>
+                        <p class="position">Тренер по боксу и борьбе</p>
+                        <p class="experience">Опыт: 10 лет</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="/image/irina.jpg" alt="Ирина Вихрева">
+                    </div>
+                    <div class="team-info">
+                        <h3>Ирина Чикипики</h3>
+                        <p class="position">Фитнес-тренер</p>
+                        <p class="experience">Опыт: 6 лет</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Расписание -->
+    <section class="schedule section-padding" id="schedule">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Расписание занятий</h2>
+                <p class="section-subtitle">
+                    Расписание занятий на предстоящую неделю с подробным указанием времени, дней и дополнительной информацией.
+                </p>
+            </div>
+            
+            <div class="schedule-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Время</th>
+                            <th>Понедельник</th>
+                            <th>Вторник</th>
+                            <th>Среда</th>
+                            <th>Четверг</th>
+                            <th>Пятница</th>
+                            <th>Суббота</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time">08:00 – 09:00</td>
+                            <td class="class yoga">Утренняя йога</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="time">10:30 – 11:30</td>
+                            <td></td>
+                            <td class="class strength">Силовая тренировка</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="time">12:00 – 13:00</td>
+                            <td></td>
+                            <td></td>
+                            <td class="class stretching">Растяжка</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="time">15:00 – 16:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="class zumba">Зумба для всех</td>
+                        </tr>
+                        <tr>
+                            <td class="time">16:00 – 17:00</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="class cardio">Кардио тренировка</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td class="time">18:30 – 19:30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="class boxing">Бокс для начинающих</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="testimonials section-padding bg-dark" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Результаты говорят сами за себя!</h2>
+                <p class="section-subtitle">
+                    Узнайте, что говорят наши клиенты о своих достижениях и впечатлениях от занятий.
+                </p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Занятия в этом фитнес-центре помогли мне стать сильнее и увереннее в себе. Особенно нравятся тренировки с собственным весом и групповые занятия."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ольга Смирнова">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ольга Смирнова</h4>
+                            <p>Посещает занятия 2 раза в неделю</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Я выбрал этот фитнес-центр из-за его уникального подхода к тренировкам. Здесь я нашёл для себя как силовые, так и динамичные занятия."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Александр Петров">
+                        </div>
+                        <div class="author-info">
+                            <h4>Александр Петров</h4>
+                            <p>Посещает занятия 3 раза в неделю</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Очень довольна своим опытом в этом фитнес-центре. Тренеры всегда готовы помочь и поддержать, а атмосфера на занятиях просто замечательная."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Анна Кузнецова">
+                        </div>
+                        <div class="author-info">
+                            <h4>Анна Кузнецова</h4>
+                            <p>Посещает занятия 4 раза в неделю</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Свяжитесь с нами!</h2>
+                <p class="section-subtitle">
+                    Мы всегда рады ответить на ваши вопросы и помочь в выборе программы тренировок.
+                </p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Телефон</h3>
+                            <p>8 800 123-45-67</p>
+                            <span>Бесплатный звонок по России</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>ironflow@example.ru</p>
+                            <span>Отвечаем в течение 24 часов</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Адрес</h3>
+                            <p>г. Благовещенск, ул. Ленина, д. 33</p>
+                            <span>Пн-Вс: 7:00 - 23:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Ваше полное имя" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" placeholder="Ваш адрес электронной почты" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="tel" placeholder="Ваш телефон">
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea placeholder="Ваше сообщение" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer bg-dark">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <span class="logo-icon"></span>
+                        <span class="logo-text">IRON<span class="orange-text">FLOW</span></span>
+                    </div>
+                    <p>Фитнес-клуб премиум класса. Объединяем силу и динамику для гармоничного развития тела и духа.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-phone"></i> 8 914 583-45-67</p>
+                    <p><i class="fas fa-envelope"></i> ironflow@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> г. Благовещенск, ул. Ленина, д. 33</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Расписание</h3>
+                    <p>Пн-Пт: 7:00 - 23:00</p>
+                    <p>Сб-Вс: 9:00 - 21:00</p>
+                    <button class="btn btn-outline schedule-btn">Посмотреть расписание</button>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 IRONFLOW Фитнес-клуб. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно входа -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal modal-login">
+            <div class="modal-header">
+                <button class="modal-close">&times;</button>
+                <h2 class="modal-title">Вход в аккаунт</h2>
+                <p class="modal-subtitle">Войдите в свой аккаунт IRONFLOW</p>
+            </div>
+            
+            <div class="modal-body modal-login-body">
+                <form id="loginForm" class="login-form-compact">
+                    <div class="form-group">
+                        <input type="email" id="loginModalEmail" name="email" placeholder="Email" required autocomplete="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="password-input-row">
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="loginModalPassword" name="password" placeholder="Пароль" required autocomplete="current-password">
+                            </div>
+                            <button type="button" class="show-password show-password-outside" title="Показать пароль" aria-label="Показать пароль"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="remember-forgot">
+                        <label class="remember">
+                            <input type="checkbox"> Запомнить меня
+                        </label>
+                        <a href="#" class="forgot-password">Забыли пароль?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Войти
+                    </button>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <p>Нет аккаунта? <a href="#" class="switch-to-register">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно восстановления пароля -->
+    <div class="modal-overlay" id="recoveryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <button class="modal-close" data-close="recoveryModal">&times;</button>
+                <h2 class="modal-title">Восстановление пароля</h2>
+                <p class="modal-subtitle">Введите email — мы пришлём ссылку для сброса пароля</p>
+            </div>
+            <div class="modal-body">
+                <form id="recoveryForm">
+                    <div class="form-group">
+                        <input type="email" id="recoveryEmail" placeholder="Ваш email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-paper-plane"></i> Отправить ссылку
+                    </button>
+                </form>
+                <p class="modal-footer" style="margin-top:16px; font-size:13px; color: var(--text-gray);">
+                    Вспомнили пароль? <a href="#" class="close-recovery">Войти</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно регистрации -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <button class="modal-close">&times;</button>
+                <h2 class="modal-title">Регистрация</h2>
+                <p class="modal-subtitle">Создайте аккаунт IRONFLOW</p>
+            </div>
+            
+            <div class="modal-body">
+                <form id="registerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="regModalFirstName" name="first_name" placeholder="Имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="regModalLastName" name="last_name" placeholder="Фамилия" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="regModalEmail" name="email" placeholder="Email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="tel" id="regModalPhone" name="phone" placeholder="Телефон">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <div class="password-input-row">
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" placeholder="Пароль" required>
+                            </div>
+                            <button type="button" class="show-password show-password-outside" title="Показать пароль"><i class="fas fa-eye"></i></button>
+                        </div>
+                        <div class="password-strength">
+                            <div class="strength-bar"></div>
+                            <span class="strength-text">Надежность</span>
+                        </div>
+                        <p class="password-requirements">Минимум 8 символов, заглавная буква, цифра и спецсимвол (!@#$%^&*…)</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Подтвердите пароль</label>
+                        <div class="password-input-row">
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirmPassword" placeholder="Подтвердите пароль" required>
+                            </div>
+                            <button type="button" class="show-password show-password-outside" title="Показать пароль"><i class="fas fa-eye"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">
+                            Я согласен с правилами клуба и политикой конфиденциальности
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-user-plus"></i>
+                        Зарегистрироваться
+                    </button>
+                </form>
+            </div>
+            
+            <div class="modal-footer">
+                <p>Уже есть аккаунт? <a href="#" class="switch-to-login">Войти</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

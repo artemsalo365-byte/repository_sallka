@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRONFLOW | Регистрация</title>
+    <script>window.location.replace('sait.html#register');</script>
+    <link rel="stylesheet" href="stuly.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <!-- Навигация -->
+    <nav class="navbar auth-navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="sait.html" class="logo">
+                    <span class="logo-icon"></span>
+                    <span class="logo-text">IRON<span class="orange-text">FLOW</span></span>
+                </a>
+                
+                <div class="auth-nav-links">
+                    <a href="auth.html" class="nav-link">Вход</a>
+                    <a href="reg.html" class="nav-link active">Регистрация</a>
+                    <a href="sait.html" class="nav-link">На главную</a>
+                </div>
+                <div class="auth-footer">
+                    <p>Уже есть аккаунт? <a href="auth.html" class="auth-link">Войдите</a></p>
+                    <p>Вернуться на <a href="sait.html" class="auth-link">главную страницу</a></p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Основной контент -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h1 class="auth-title">Стань частью IRON<span class="orange-text">FLOW</span></h1>
+                    <p class="auth-subtitle">Создайте аккаунт и начните свой путь к лучшей версии себя</p>
+                </div>
+                
+                <div class="auth-card">
+                    <form id="registerForm" class="auth-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Имя</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="firstName" placeholder="Ваше имя" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName">Фамилия</label>
+                                <div class="input-with-icon">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="lastName" placeholder="Ваша фамилия" required>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regEmail">Email</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="regEmail" placeholder="your@email.com" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="phone" placeholder="+7 (999) 123-45-67">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="regPassword">Пароль</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="regPassword" placeholder="Создайте пароль" required>
+                                <button type="button" class="show-password" id="showRegPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength">
+                                <div class="strength-bar"></div>
+                                <span class="strength-text">Надежность пароля</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Подтвердите пароль</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirmPassword" placeholder="Повторите пароль" required>
+                                <button type="button" class="show-password" title="Показать пароль"><i class="fas fa-eye"></i></button>
+                            </div>
+                            <div class="password-match"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="newsletter" checked>
+                                <label for="newsletter">Получать новости и специальные предложения</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms">
+                                    Я согласен с <a href="#" class="terms-link">правилами клуба</a> и 
+                                    <a href="#" class="terms-link">политикой конфиденциальности</a>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">
+                            <i class="fas fa-user-plus"></i>
+                            Создать аккаунт
+                        </button>
+                    </form>
+                    
+                    <div class="auth-footer">
+                        <p>Уже есть аккаунт? <a href="auth.html" class="auth-link">Войдите</a></p>
+                        <p>Вернуться на <a href="sait.html" class="auth-link">главную страницу</a></p>
+                    </div>
+                </div>
+                
+                <div class="auth-benefits">
+                    <h3 class="benefits-title">Преимущества регистрации</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit">
+                            <i class="fas fa-calendar-check"></i>
+                            <h4>Бронирование занятий</h4>
+                            <p>Бронируйте места на групповые тренировки онлайн</p>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Отслеживание прогресса</h4>
+                            <p>Сохраняйте историю тренировок и следите за результатами</p>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-percentage"></i>
+                            <h4>Специальные предложения</h4>
+                            <p>Получайте персональные скидки и промокоды</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно успешной регистрации -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-header">
+                <button class="modal-close">&times;</button>
+                <h2 class="modal-title">Регистрация успешна! 🎉</h2>
+                <p class="modal-subtitle">Добро пожаловать в семью IRONFLOW</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="success-message">Ваш аккаунт успешно создан. Теперь вы можете войти в систему.</p>
+            </div>
+            
+            <div class="modal-footer">
+                <a href="auth.html" class="btn btn-primary btn-block">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Войти в аккаунт
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

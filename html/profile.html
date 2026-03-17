@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Личный кабинет IRONFLOW: данные профиля, активный абонемент, история платежей.">
+    <meta name="keywords" content="IRONFLOW, профиль, личный кабинет, абонемент, фитнес">
+    <title>IRONFLOW | Профиль</title>
+    <link rel="stylesheet" href="stuly.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .profile-page { padding: 120px 0 80px; min-height: 100vh; }
+        .profile-container { max-width: 700px; margin: 0 auto; }
+        .profile-header { text-align: center; margin-bottom: 40px; }
+        .profile-title { font-family: var(--font-heading); font-size: 38px; color: var(--white); margin-bottom: 10px; }
+        .profile-card {
+            background: var(--gray); border-radius: var(--border-radius-lg);
+            padding: 32px; margin-bottom: 24px; border: 1px solid var(--light-gray);
+        }
+        .profile-card h2 {
+            font-family: var(--font-heading); font-size: 22px; color: var(--orange);
+            margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--light-gray);
+        }
+        .profile-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); color: var(--text-light); }
+        .profile-row:last-child { border-bottom: none; }
+        .profile-row .label { color: var(--text-gray); }
+        .profile-row .value { font-weight: 500; color: var(--white); }
+        .sub-card {
+            background: linear-gradient(135deg, rgba(255,107,53,0.12) 0%, var(--gray) 100%);
+            border: 1px solid var(--orange); border-radius: var(--border-radius);
+            padding: 24px; margin-bottom: 16px;
+        }
+        .sub-card h3 { font-family: var(--font-heading); font-size: 24px; color: var(--white); margin-bottom: 16px; }
+        .sub-card .sub-dates { color: var(--text-gray); font-size: 14px; margin-bottom: 16px; }
+        .sub-card .sub-status { display: inline-block; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+        .sub-card .sub-status.active { background: rgba(76,175,80,0.2); color: #81c784; }
+        .profile-no-sub { text-align: center; padding: 40px 20px; color: var(--text-gray); }
+        .profile-no-sub a { color: var(--orange); font-weight: 600; }
+        .btn-return { margin-top: 16px; }
+        .profile-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+        .profile-actions .btn { min-width: 140px; }
+        .profile-message { padding: 14px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .profile-message.success { background: rgba(76,175,80,0.2); color: #81c784; display: block; }
+        .profile-message.error { background: rgba(255,82,82,0.2); color: #ff8a80; display: block; }
+        .profile-loading { text-align: center; padding: 60px 20px; color: var(--text-gray); }
+        .profile-edit-form .form-group { margin-bottom: 16px; }
+        .profile-edit-form input { width: 100%; padding: 12px 16px; background: var(--dark); border: 1px solid var(--light-gray); border-radius: 8px; color: var(--white); font-size: 15px; }
+        .profile-edit-form input:focus { outline: none; border-color: var(--orange); }
+        .profile-edit-form label { display: block; margin-bottom: 6px; color: var(--text-gray); font-size: 14px; }
+        .profile-section-actions { margin-top: 16px; }
+        .profile-card .btn-edit { margin-top: 8px; }
+        .profile-password-form .password-input-row { display: flex; align-items: center; gap: 12px; max-width: 320px; }
+        .profile-password-form .password-input-row .input-with-icon { flex: 1; min-width: 0; }
+        .profile-password-form .password-input-row .input-with-icon input { padding-left: 16px; padding-right: 16px; }
+    </style>
+</head>
+<body class="auth-page">
+    <nav class="navbar auth-navbar">
+        <div class="container">
+            <div class="nav-container">
+                <a href="sait.html" class="logo">
+                    <span class="logo-icon"></span>
+                    <span class="logo-text">IRON<span class="orange-text">FLOW</span></span>
+                </a>
+                <div class="auth-nav-links">
+                    <a href="sait.html" class="nav-link">Главная</a>
+                    <a href="subscription.html" class="nav-link">Абонементы</a>
+                    <a href="profile.html" class="nav-link active">Профиль</a>
+                    <button type="button" class="btn btn-outline btn-sm" id="profileLogout">Выйти</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="profile-page">
+        <div class="container profile-container">
+            <div class="profile-header">
+                <h1 class="profile-title">Мой профиль</h1>
+                <p class="auth-subtitle">Личные данные и абонемент</p>
+            </div>
+
+            <div class="profile-message" id="profileMessage"></div>
+            <div class="profile-loading" id="profileLoading">Загрузка...</div>
+            <div id="profileContent" style="display: none;">
+                <div class="profile-card">
+                    <h2><i class="fas fa-user"></i> Личные данные</h2>
+                    <div id="profileView">
+                        <div class="profile-row">
+                            <span class="label">Имя</span>
+                            <span class="value" id="profileFirstName">—</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="label">Фамилия</span>
+                            <span class="value" id="profileLastName">—</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="label">Email</span>
+                            <span class="value" id="profileEmail">—</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="label">Телефон</span>
+                            <span class="value" id="profilePhone">—</span>
+                        </div>
+                        <div class="profile-row">
+                            <span class="label">В клубе с</span>
+                            <span class="value" id="profileCreated">—</span>
+                        </div>
+                        <button type="button" class="btn btn-outline btn-edit" id="btnEditData"><i class="fas fa-edit"></i> Изменить данные</button>
+                    </div>
+                    <form id="profileEditForm" class="profile-edit-form" style="display: none;">
+                        <div class="form-group">
+                            <label>Имя</label>
+                            <input type="text" id="editFirstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Фамилия</label>
+                            <input type="text" id="editLastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Телефон</label>
+                            <input type="tel" id="editPhone" placeholder="+7 ...">
+                        </div>
+                        <div class="profile-section-actions">
+                            <button type="submit" class="btn btn-primary">Сохранить</button>
+                            <button type="button" class="btn btn-outline" id="btnCancelEdit">Отмена</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="profile-card">
+                    <h2><i class="fas fa-lock"></i> Сменить пароль</h2>
+                    <form id="profileChangePasswordForm" class="profile-edit-form profile-password-form">
+                        <div class="form-group">
+                            <label>Текущий пароль</label>
+                            <div class="password-input-row">
+                                <div class="input-with-icon">
+                                    <input type="password" id="currentPassword" required placeholder="Введите текущий пароль">
+                                </div>
+                                <button type="button" class="show-password show-password-outside" title="Показать пароль"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Новый пароль</label>
+                            <div class="password-input-row">
+                                <div class="input-with-icon">
+                                    <input type="password" id="newPassword" required placeholder="Не менее 6 символов">
+                                </div>
+                                <button type="button" class="show-password show-password-outside" title="Показать пароль"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Повторите новый пароль</label>
+                            <div class="password-input-row">
+                                <div class="input-with-icon">
+                                    <input type="password" id="newPasswordConfirm" required placeholder="Повторите пароль">
+                                </div>
+                                <button type="button" class="show-password show-password-outside" title="Показать пароль"><i class="fas fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="profile-section-actions">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-key"></i> Сменить пароль</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="profile-card">
+                    <h2><i class="fas fa-credit-card"></i> Привязанная карта</h2>
+                    <div id="profileCardBlock">
+                        <p class="profile-no-sub" id="profileNoCard">Карта не привязана. Она будет сохранена при оплате абонемента.</p>
+                        <div id="profileCardRow" style="display: none;">
+                            <div class="profile-row">
+                                <span class="label">Карта</span>
+                                <span class="value" id="profileCardMasked">—</span>
+                            </div>
+                            <button type="button" class="btn btn-outline btn-edit" id="btnRemoveCard"><i class="fas fa-unlink"></i> Отвязать карту</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <h2><i class="fas fa-id-card"></i> Абонемент</h2>
+                    <div id="profileSubscriptionBlock">
+                        <div class="profile-no-sub" id="profileNoSub">
+                            У вас нет активного абонемента.
+                            <br><a href="subscription.html">Купить абонемент</a>
+                        </div>
+                        <div id="profileSubCard" style="display: none;">
+                            <div class="sub-card">
+                                <h3 id="subTypeName">—</h3>
+                                <div class="sub-dates">
+                                    Действует с <strong id="subStart">—</strong> по <strong id="subEnd">—</strong>
+                                </div>
+                                <span class="sub-status active" id="subStatus">Активен</span>
+                                <div>
+                                    <button type="button" class="btn btn-outline btn-return" id="btnReturn">
+                                        <i class="fas fa-undo"></i> Оформить возврат
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <a href="sait.html" class="btn btn-outline">На главную</a>
+                    <a href="subscription.html" class="btn btn-primary">Купить абонемент</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        (function() {
+            var API = (window.location.origin || 'http://localhost:5000') + '/api';
+            var loading = document.getElementById('profileLoading');
+            var content = document.getElementById('profileContent');
+            var msg = document.getElementById('profileMessage');
+
+            function showMsg(text, type) {
+                msg.textContent = text;
+                msg.className = 'profile-message ' + (type || '');
+            }
+
+            function loadProfile() {
+                fetch(API + '/profile/full', { credentials: 'include' })
+                    .then(function(r) {
+                        if (r.status === 401) {
+                            window.location.href = 'sait.html#login';
+                            return null;
+                        }
+                        return r.json();
+                    })
+                    .then(function(data) {
+                        loading.style.display = 'none';
+                        if (!data) return;
+                        content.style.display = 'block';
+                        var u = data.user;
+                        document.getElementById('profileFirstName').textContent = u.first_name || '—';
+                        document.getElementById('profileLastName').textContent = u.last_name || '—';
+                        document.getElementById('profileEmail').textContent = u.email || '—';
+                        document.getElementById('profilePhone').textContent = u.phone || '—';
+                        document.getElementById('profileCreated').textContent = u.created_at || '—';
+
+                        var card = data.saved_card;
+                        if (card) {
+                            document.getElementById('profileNoCard').style.display = 'none';
+                            document.getElementById('profileCardRow').style.display = 'block';
+                            document.getElementById('profileCardMasked').textContent = card.masked_number || ('**** **** **** ' + (card.last4 || ''));
+                        } else {
+                            document.getElementById('profileNoCard').style.display = 'block';
+                            document.getElementById('profileCardRow').style.display = 'none';
+                        }
+
+                        var sub = data.active_subscription;
+                        if (sub) {
+                            document.getElementById('profileNoSub').style.display = 'none';
+                            var card = document.getElementById('profileSubCard');
+                            card.style.display = 'block';
+                            document.getElementById('subTypeName').textContent = sub.subscription_type_name;
+                            document.getElementById('subStart').textContent = sub.start_date;
+                            document.getElementById('subEnd').textContent = sub.end_date;
+                            document.getElementById('btnReturn').dataset.subId = sub.id;
+                        } else {
+                            document.getElementById('profileNoSub').style.display = 'block';
+                            document.getElementById('profileSubCard').style.display = 'none';
+                        }
+                    })
+                    .catch(function() {
+                        loading.style.display = 'none';
+                        showMsg('Ошибка загрузки. Войдите в аккаунт.', 'error');
+                        content.style.display = 'block';
+                    });
+            }
+
+            document.getElementById('btnRemoveCard').addEventListener('click', function() {
+                if (!confirm('Отвязать карту от профиля?')) return;
+                var btn = this;
+                btn.disabled = true;
+                fetch(API + '/profile/card', { method: 'DELETE', credentials: 'include' })
+                    .then(function(r) { return r.json(); })
+                    .then(function() {
+                        showMsg('Карта отвязана', 'success');
+                        document.getElementById('profileNoCard').style.display = 'block';
+                        document.getElementById('profileCardRow').style.display = 'none';
+                        btn.disabled = false;
+                    })
+                    .catch(function() {
+                        showMsg('Ошибка сети', 'error');
+                        btn.disabled = false;
+                    });
+            });
+
+            document.getElementById('btnReturn').addEventListener('click', function() {
+                var id = this.dataset.subId;
+                if (!id) return;
+                if (!confirm('Оформить возврат абонемента? После этого вы сможете купить новый.')) return;
+                this.disabled = true;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Оформление...';
+                fetch(API + '/subscription/' + id + '/return', {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+                    .then(function(result) {
+                        if (result.ok) {
+                            showMsg('Возврат оформлен. Теперь вы можете купить новый абонемент.', 'success');
+                            loadProfile();
+                        } else {
+                            showMsg('Ошибка: ' + (result.data.error || 'Попробуйте позже'), 'error');
+                        }
+                        var btn = document.getElementById('btnReturn');
+                        btn.disabled = false;
+                        btn.innerHTML = '<i class="fas fa-undo"></i> Оформить возврат';
+                    })
+                    .catch(function() {
+                        showMsg('Ошибка сети', 'error');
+                        document.getElementById('btnReturn').disabled = false;
+                        document.getElementById('btnReturn').innerHTML = '<i class="fas fa-undo"></i> Оформить возврат';
+                    });
+            });
+
+            document.getElementById('profileLogout').addEventListener('click', function() {
+                fetch(API + '/logout', { method: 'POST', credentials: 'include' })
+                    .then(function() { window.location.href = 'sait.html'; });
+            });
+
+            document.getElementById('btnEditData').addEventListener('click', function() {
+                document.getElementById('profileView').style.display = 'none';
+                document.getElementById('profileEditForm').style.display = 'block';
+                document.getElementById('editFirstName').value = document.getElementById('profileFirstName').textContent;
+                document.getElementById('editLastName').value = document.getElementById('profileLastName').textContent;
+                document.getElementById('editPhone').value = document.getElementById('profilePhone').textContent;
+            });
+            document.getElementById('btnCancelEdit').addEventListener('click', function() {
+                document.getElementById('profileView').style.display = 'block';
+                document.getElementById('profileEditForm').style.display = 'none';
+            });
+            document.getElementById('profileEditForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var btn = this.querySelector('button[type="submit"]');
+                btn.disabled = true;
+                fetch(API + '/profile', {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        first_name: document.getElementById('editFirstName').value.trim(),
+                        last_name: document.getElementById('editLastName').value.trim(),
+                        phone: document.getElementById('editPhone').value.trim()
+                    })
+                })
+                    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+                    .then(function(result) {
+                        if (result.ok) {
+                            showMsg('Данные сохранены', 'success');
+                            document.getElementById('profileFirstName').textContent = result.data.user.first_name;
+                            document.getElementById('profileLastName').textContent = result.data.user.last_name;
+                            document.getElementById('profilePhone').textContent = result.data.user.phone || '—';
+                            document.getElementById('profileView').style.display = 'block';
+                            document.getElementById('profileEditForm').style.display = 'none';
+                        } else {
+                            showMsg('Ошибка: ' + (result.data.error || ''), 'error');
+                        }
+                        btn.disabled = false;
+                    })
+                    .catch(function() {
+                        showMsg('Ошибка сети', 'error');
+                        btn.disabled = false;
+                    });
+            });
+
+            document.getElementById('profileChangePasswordForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var newP = document.getElementById('newPassword').value;
+                var newPC = document.getElementById('newPasswordConfirm').value;
+                if (newP !== newPC) {
+                    showMsg('Пароли не совпадают', 'error');
+                    return;
+                }
+                if (newP.length < 6) {
+                    showMsg('Пароль не менее 6 символов', 'error');
+                    return;
+                }
+                var btn = this.querySelector('button[type="submit"]');
+                btn.disabled = true;
+                fetch(API + '/profile/change-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        current_password: document.getElementById('currentPassword').value,
+                        new_password: newP
+                    })
+                })
+                    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+                    .then(function(result) {
+                        if (result.ok) {
+                            showMsg('Пароль успешно изменён', 'success');
+                            document.getElementById('currentPassword').value = '';
+                            document.getElementById('newPassword').value = '';
+                            document.getElementById('newPasswordConfirm').value = '';
+                        } else {
+                            showMsg(result.data.error || 'Ошибка', 'error');
+                        }
+                        btn.disabled = false;
+                    })
+                    .catch(function() {
+                        showMsg('Ошибка сети', 'error');
+                        btn.disabled = false;
+                    });
+            });
+
+            document.querySelectorAll('.profile-password-form .show-password').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var row = btn.closest('.password-input-row');
+                    var input = row ? row.querySelector('.input-with-icon input') : null;
+                    if (!input) return;
+                    var icon = btn.querySelector('i');
+                    if (input.type === 'password') { input.type = 'text'; if (icon) { icon.classList.remove('fa-eye'); icon.classList.add('fa-eye-slash'); } }
+                    else { input.type = 'password'; if (icon) { icon.classList.remove('fa-eye-slash'); icon.classList.add('fa-eye'); } }
+                });
+            });
+
+            loadProfile();
+        })();
+    </script>
+</body>
+</html>
